@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
@@ -7,18 +8,16 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// MySQL connection (UPDATE YOUR CREDENTIALS HERE)
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Krishna31@', 
-    database: 'expense_tracker'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD, 
+    database: process.env.DB_NAME
 });
 
 db.connect(err => {
     if (err) {
         console.error('MySQL connection error:', err);
-        // Exiting the process if the database connection fails is a good practice
         process.exit(1); 
     }
     console.log('MySQL Connected!');
@@ -221,4 +220,5 @@ app.use((err, req, res, next) => {
 const PORT = 5000;
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
+
 });
