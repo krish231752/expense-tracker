@@ -22,7 +22,6 @@ A simple web-based Expense Tracker application that helps users manage their dai
 - Database storage
 
 🌐 Live Demo
-(Add deployed link here)
 
 👨‍💻 Author
 Krish
