@@ -13,7 +13,6 @@ A simple web-based Expense Tracker application that helps users manage their dai
 - HTML
 - CSS
 - JavaScript
-(or your actual stack)
 
 📊 Future Improvements
 - Authentication
