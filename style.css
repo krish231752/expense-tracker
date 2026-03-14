@@ -1,0 +1,245 @@
+/* ========================================= */
+/* 1. Base Styles & Typography */
+/* ========================================= */
+
+:root {
+    --primary-color: #007bff; /* A clean blue for primary actions */
+    --secondary-color: #28a745; /* Green for success/add */
+    --danger-color: #dc3545; /* Red for delete/errors */
+    --background-light: #f4f7f6;
+    --card-background: #ffffff;
+    --text-color: #343a40;
+    --border-color: #e9ecef;
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-light);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1.5rem 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+section {
+    max-width: 1200px;
+    margin: 0 auto 2rem auto; /* Center sections and add space below */
+    background: var(--card-background);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    transition: box-shadow 0.3s ease;
+}
+
+section:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* Subtle lift on hover */
+}
+
+/* ========================================= */
+/* 2. Forms & Inputs (Interactive Focus) */
+/* ========================================= */
+
+form {
+    margin: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+input, select, button {
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px; /* Slightly rounder corners */
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transitions */
+}
+
+input:focus, select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Blue glow on focus */
+    outline: none;
+}
+
+input[type="number"], input[type="date"], input[type="text"], select {
+    flex: 1; 
+    min-width: 150px;
+}
+
+/* Base Button Style */
+button {
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px); /* Subtle lift effect */
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    background-color: #adb5bd;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Action Buttons in Tables */
+.delete-btn {
+    background-color: var(--danger-color) !important;
+}
+
+.delete-btn:hover {
+    background-color: #c82333 !important;
+}
+
+.edit-btn {
+    background-color: #ffc107 !important; /* Yellow/Amber for Edit */
+    color: var(--text-color); /* Dark text on light button */
+}
+
+.edit-btn:hover {
+    background-color: #e0a800 !important;
+}
+
+.edit-btn.save-mode {
+    background-color: var(--secondary-color) !important; /* Green for Save */
+    color: white;
+}
+
+.edit-btn.save-mode:hover {
+    background-color: #1e7e34 !important;
+}
+
+/* ========================================= */
+/* 3. Tables (Clarity and Readability) */
+/* ========================================= */
+
+table {
+    width: 100%;
+    border-collapse: separate; /* Use separate for rounder table edges */
+    border-spacing: 0;
+    margin-top: 15px;
+    border-radius: 8px;
+    overflow: hidden; /* Ensures borders/shadows respect radius */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+th, td {
+    border: none;
+    padding: 12px 15px;
+    text-align: left;
+    min-width: 100px;
+}
+
+th {
+    background-color: #e9ecef;
+    color: var(--text-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tr:hover {
+    background-color: #e2e6ea; /* Highlight row on hover */
+    transition: background-color 0.2s ease;
+}
+
+/* Report Status Colors */
+.error-text { /* For Over Budget status */
+    color: var(--danger-color);
+    font-weight: bold;
+}
+
+.success-text { /* For Under Budget status */
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+
+/* ========================================= */
+/* 4. Notifications & Chart */
+/* ========================================= */
+
+#spendingChart {
+    max-width: 800px; /* Limit chart width */
+    height: auto;
+    border: none;
+    margin: 25px auto;
+}
+
+#notifications {
+    top: 25px;
+    right: 25px;
+}
+
+.notification {
+    background: var(--secondary-color);
+    padding: 15px; /* Bigger padding */
+    border-radius: 8px;
+}
+
+.notification.error {
+    background: var(--danger-color);
+}
+
+/* ========================================= */
+/* 5. Responsive Design */
+/* ========================================= */
+
+@media (max-width: 768px) {
+    section {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+
+    form {
+        flex-direction: column;
+    }
+
+    input, select, button {
+        width: 100%;
+        margin: 5px 0;
+    }
+    
+    /* Tables become slightly smaller for mobile */
+    th, td {
+        padding: 8px 10px;
+        min-width: 80px;
+        font-size: 0.9rem;
+    }
+}

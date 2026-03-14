@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Personal Expense Tracker</h1>
+        <p>Manage your categories, expenses, and view reports. Backend: http://localhost:5000</p>
+    </header>
+
+    <!-- Categories Section -->
+    <section id="categories">
+        <h2>Categories</h2>
+        <button onclick="loadCategories()">Load Categories</button>
+        <form id="addCategoryForm" style="display: none;">
+            <input type="text" id="catName" placeholder="Category Name" required>
+            <input type="number" id="catBudget" placeholder="Budget Limit" step="0.01" required>
+            <button type="submit">Add Category</button>
+        </form>
+        <table id="categoriesTable">
+            <thead><tr><th>ID</th><th>Name</th><th>Budget Limit</th><th>Actions</th></tr></thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+    <!-- Expenses Section -->
+    <section id="expenses">
+        <h2>Expenses</h2>
+        <button onclick="loadExpenses()">Load Expenses</button>
+        <form id="addExpenseForm" style="display: none;">
+            <select id="expCategory"></select>
+            <input type="number" id="expAmount" placeholder="Amount" step="0.01" required>
+            <input type="text" id="expDescription" placeholder="Description" required>
+            <input type="date" id="expDate" required>
+            <button type="submit">Add Expense</button>
+        </form>
+        <table id="expensesTable">
+            <thead><tr><th>ID</th><th>Category</th><th>Amount</th><th>Description</th><th>Date</th><th>Actions</th></tr></thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+    <!-- Reports Section -->
+    <section id="reports">
+        <h2>Monthly Reports</h2>
+        <input type="month" id="reportMonth" value="2023-10">
+        <button onclick="loadReport()">Generate Report</button>
+        <table id="reportsTable">
+            <thead><tr><th>Category</th><th>Total Spent</th><th>Budget Limit</th><th>Status</th></tr></thead>
+            <tbody></tbody>
+        </table>
+        <canvas id="spendingChart" width="600" height="300" style="display: block; margin: 20px auto; border: 1px solid #ddd;"></canvas>
+    </section>
+
+    <!-- Notification Div for Better UX (Optional - Add if using notifications in JS) -->
+    <div id="notifications" style="position: fixed; top: 10px; right: 10px; z-index: 1000;"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
